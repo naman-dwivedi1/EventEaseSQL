@@ -34,8 +34,6 @@ jobs:
             cd /home/$EC2_USER/app
             
             # Ensure Python and virtual environment are installed
-            sudo dnf install docker
-            sudo service docker start
             docker build .
             docker compose up
           EOF
