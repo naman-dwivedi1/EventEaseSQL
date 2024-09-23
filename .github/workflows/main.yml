@@ -34,16 +34,9 @@ jobs:
             cd /home/$EC2_USER/app
             
             # Ensure Python and virtual environment are installed
-            python3 -m venv venv
-            source venv/bin/activate
-
-            # Install dependencies
-            pip install --upgrade pip
-            pip install -r requirements.txt
-
-            # Apply Django migrations
-            python manage.py migrate
-
-            # Run the Django development server
-            nohup python manage.py runserver 0.0.0.0:8000 &
+            sudo yum update -y
+            sudo amazon-linux-extras install docker
+            sudo service docker start
+            docker build .
+            docker compose up
           EOF
